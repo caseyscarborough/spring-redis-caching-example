@@ -14,10 +14,11 @@ public class ExampleController {
 
   @RequestMapping(value = "/", method = RequestMethod.GET)
   @ResponseBody
-  @Cacheable("calculateResult")
+  @Cacheable(value = "calculateResult", keyGenerator = "customKeyGenerator")
   public String calculateResult() {
     log.debug("Performing expensive calculation...");
     // perform computationally expensive calculation
     return "result";
   }
+
 }
